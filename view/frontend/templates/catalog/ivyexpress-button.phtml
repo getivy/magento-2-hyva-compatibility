@@ -18,10 +18,11 @@
             event.preventDefault();
 
             let form = document.getElementById('product_addtocart_form');
-            let body = document.querySelector('.ivy-product-button');
+            let body = document.querySelector('body');
 
             if (form.checkValidity()) {
                 form.submit();
+                //body.trigger('processStart'); //loading start...
                 setTimeout(function () {
                     let linkUrl = window.BASE_URL + "ivypayment/checkout/index/express/1";
 
@@ -33,9 +34,11 @@
                         },
                     }).then((response) => response.json())
                         .then((result) => {
+                            //body.trigger('processStop'); //loading stop...
                             window.startIvyCheckout(result.redirectUrl, 'popup');
                         })
                         .catch((error) => {
+                            //body.trigger('processStop'); //loading stop...
                             dispatchMessages([
                                 {
                                     type: "error",
@@ -51,34 +54,3 @@
         }, 3000);
     });
 </script>
-
-<!--<script>-->
-<!--    require(['jquery', 'mage/url', 'Magento_Ui/js/model/messageList', 'domReady!'], function ($, url, messageList) {-->
-<!--        $(".ivy-product-button").on('click', function (event) {-->
-<!--            event.preventDefault();-->
-<!--            if ($('#product_addtocart_form').valid()) {-->
-<!--                $('#product_addtocart_form').submit();-->
-<!--                $("body").trigger('processStart');-->
-<!--                setTimeout(function () {-->
-<!--                    var linkUrl = url.build('ivypayment/checkout/index/express/1');-->
-<!--                    $.ajax({-->
-<!--                        url: linkUrl,-->
-<!--                        type: 'POST',-->
-<!--                        success: function (response) {-->
-<!--                            $("body").trigger('processStop');-->
-<!--                            window.startIvyCheckout(response.redirectUrl, 'popup')-->
-<!--                        },-->
-<!--                        error: function (xhr, status, errorThrown) {-->
-<!--                            $("body").trigger('processStop');-->
-<!--                            messageList.addErrorMessage({message: errorThrown});-->
-<!--                        }-->
-<!--                    });-->
-<!--                }, 3000);-->
-<!--            }-->
-<!--        });-->
-<!--        setTimeout(function () {-->
-<!--            $('.ivy-product-button').show();-->
-<!--        }, 3000);-->
-<!--    });-->
-<!---->
-<!--</script>-->

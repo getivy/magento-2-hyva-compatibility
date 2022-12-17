@@ -1,38 +1,83 @@
 <?php $banner = $block->getBannerData(); ?>
-<script>
-  require([
-    'jquery',
-    'Magento_Customer/js/customer-data',
-    'mage/url',
-    'Magento_Ui/js/model/messageList',
-    ,'domReady!'], function ($, customerData, url, messageList) {
-      jQuery('[data-block="minicart"]').on('contentUpdated', function ()  {
-        setTimeout(function() {
-          
-          var subtotal = customerData.get('cart')._latestValue.subtotalAmount;
-          window.initIvyButton();
+<?= $block->getChildHtml('loading') ?>
 
-          $(".ivy-express-minicart-button").unbind('click');
-          $( ".ivy-express-minicart-button" ).click(function() {
-            $("body").trigger('processStart');
-              var linkUrl = url.build('ivypayment/checkout/index/express/1');
-              
-              $.ajax({
-                  url: linkUrl,
-                  type: 'POST',
-                  success: function(response) {
-                    $("body").trigger('processStop');
-                      window.startIvyCheckout(response.redirectUrl,'popup');
-                  },
-                  error: function(xhr, status, errorThrown) {
-                    $("body").trigger('processStop');
-                      messageList.addErrorMessage({ message: errorThrown });
-                  }
-              });
-          });
-        }, 2000);
-      });
-      
-    }); 
-  
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let miniCart = document.querySelector('[data-block="minicart"]');//not working data-block, its wrong
+
+        miniCart.addEventListener('contentUpdated', () => { //on minicart open
+            setTimeout(function () {
+                window.initIvyButton();
+                let button = document.querySelector('.ivy-express-minicart-button');
+                let body = document.querySelector('body');
+
+                //var subtotal = customerData.get('cart')._latestValue.subtotalAmount; //are we need this?
+
+                //button.removeEventListener('click', ? , false); //i dont know how to remove it correct
+                button.addEventListener('click', () => {
+                    //body.trigger('processStart'); //loading start...
+                    let linkUrl = window.BASE_URL + "ivypayment/checkout/index/express/1";
+
+                    fetch(linkUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Requested-With': 'XMLHttpRequest'
+                        },
+                    }).then((response) => response.json())
+                        .then((result) => {
+                            //body.trigger('processStop'); //loading stop...
+                            window.startIvyCheckout(result.redirectUrl, 'popup');
+                        })
+                        .catch((error) => {
+                            //body.trigger('processStop'); //loading stop...
+                            dispatchMessages([
+                                {
+                                    type: "error",
+                                    text: error
+                                }
+                            ]);
+                        });
+                }
+            }, 2000);
+        });
+    });
+</script>
+
+<script>
+    require([
+        'jquery',
+        'Magento_Customer/js/customer-data',
+        'mage/url',
+        'Magento_Ui/js/model/messageList',
+        , 'domReady!'], function ($, customerData, url, messageList) {
+        jQuery('[data-block="minicart"]').on('contentUpdated', function () {
+            setTimeout(function () {
+
+                var subtotal = customerData.get('cart')._latestValue.subtotalAmount;
+                window.initIvyButton();
+
+                $(".ivy-express-minicart-button").unbind('click');
+                $(".ivy-express-minicart-button").click(function () {
+                    $("body").trigger('processStart');
+                    var linkUrl = url.build('ivypayment/checkout/index/express/1');
+
+                    $.ajax({
+                        url: linkUrl,
+                        type: 'POST',
+                        success: function (response) {
+                            $("body").trigger('processStop');
+                            window.startIvyCheckout(response.redirectUrl, 'popup');
+                        },
+                        error: function (xhr, status, errorThrown) {
+                            $("body").trigger('processStop');
+                            messageList.addErrorMessage({message: errorThrown});
+                        }
+                    });
+                });
+            }, 2000);
+        });
+
+    });
+
 </script>
