@@ -1,10 +1,4 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright ©  All rights reserved.
- * See COPYING.txt for license details.
- */-->
-
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Hyva\CompatModuleFallback\Model\CompatModuleRegistry">
@@ -16,5 +10,9 @@
                 </item>
             </argument>
         </arguments>
+    </type>
+    <type name="Hyva\ReactCheckout\ViewModel\CheckoutConfigProvider">
+        <plugin name="hyva_react_checkout_ivy_payment_checkout_config"
+                type="Esparksinc\IvyPaymentHyvaCompatibility\Plugin\CheckoutConfigProviderPlugin"/>
     </type>
 </config>

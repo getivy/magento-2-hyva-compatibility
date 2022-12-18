@@ -1,0 +1,98 @@
+{
+  "name": "hyva-react-checkout-ivy-payment",
+  "description": "The right way to modify Hyvä React Checkout Magento 2 module.",
+  "repository": "local",
+  "keywords": [
+    "react",
+    "checkout",
+    "magento",
+    "magento 2"
+  ],
+  "author": "Hyvä Themes BV",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "proxy": "https://demo.hyva.io",
+  "dependencies": {
+    "@heroicons/react": "^1.0.6",
+    "@hyva/react-checkout": "file:../../../../../vendor/hyva-themes/magento2-react-checkout/src/reactapp/src",
+    "formik": "^2.2.9",
+    "lodash-es": "^4.17.21",
+    "lodash.get": "^4.4.2",
+    "npm-run-all": "^4.1.5",
+    "preact": "^10.7.3",
+    "prop-types": "^15.8.1",
+    "react": "^18.1.0",
+    "react-app-polyfill": "^3.0.0",
+    "react-dom": "^18.1.0",
+    "react-scripts": "^5.0.1",
+    "yup": "^0.32.11"
+  },
+  "scripts": {
+    "preinstall": "node scripts/configureCheckoutIntegrations",
+    "start": "npm run app:start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-app-rewired eject",
+    "precommit": "lint-staged",
+    "app:start": "react-app-rewired start",
+    "analyze": "source-map-explorer ../view/frontend/web/js/react-checkout.js"
+  },
+  "lint-staged": {
+    "src/*.{js,jsx,json,scss,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "config": {
+    "paymentMethodsRepo": {
+      "IvyPayment": "https://github.com/getivy/magento-2-hyva-react-checkout.git"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=16.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "ie 11",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "ie 11",
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/eslint-parser": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@tailwindcss/forms": "^0.5.2",
+    "eslint": "^8.16.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.5.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.0",
+    "postcss": "^8.4.14",
+    "postcss-import": "^14.1.0",
+    "postcss-loader": "^7.0.0",
+    "postcss-nested": "^5.0.6",
+    "prettier": "^2.6.2",
+    "react-app-rewire-alias": "^1.1.7",
+    "react-app-rewired": "^2.2.1",
+    "react-dev-utils": "^12.0.1",
+    "source-map-explorer": "^2.5.2"
+  }
+}
