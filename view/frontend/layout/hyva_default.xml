@@ -3,6 +3,7 @@
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <move element="ivy_mini" destination="extra_actions"/>
-        <referenceBlock name="ivy_mini" template="Esparksinc_IvyPaymentHyvaCompatibility::minicart/ivypayment-button.phtml" />
+        <referenceBlock name="ivy_mini"
+                        template="Esparksinc_IvyPaymentHyvaCompatibility::minicart/ivypayment-button.phtml"/>
     </body>
 </page>

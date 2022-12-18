@@ -1,5 +1,15 @@
-<?php $banner = $block->getBannerData(); ?>
-<?= $block->getChildHtml('loading') ?>
+<?php
+
+declare(strict_types=1);
+
+use Magento\Checkout\Block\Cart\Sidebar;
+
+/** @var Sidebar $block */
+
+$product = $block->getProduct();
+$banner = $block->getBannerData();
+
+?>
 <button
     x-show="isVisible"
     x-init="initButton()"
