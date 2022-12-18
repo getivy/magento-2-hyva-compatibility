@@ -9,6 +9,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Esparksinc_IvyPaymentHyvaCompatibility">
         <sequence>
+            <module name="Hyva_ReactCheckout"/>
             <module name="Esparksinc_IvyPayment"/>
             <module name="Hyva_CompatModuleFallback"/>
         </sequence>
