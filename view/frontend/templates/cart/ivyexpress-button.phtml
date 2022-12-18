@@ -1,11 +1,14 @@
 <?php
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
+
+declare(strict_types=1);
+
+use Magento\Checkout\Block\Cart;
+
+/** @var Cart $block */
+
+$banner = $block->getBannerData();
 
 ?>
-<?php $banner = $block->getBannerData(); ?>
 
 <button
     x-show="isVisible"
@@ -47,7 +50,7 @@
                 })
                     .then((response) => response.json())
                     .then((result) => {
-                        const { redirectUrl } = result;
+                        const {redirectUrl} = result;
                         if (Object.prototype.hasOwnProperty.call(window, 'startIvyCheckout')) {
                             window.startIvyCheckout(redirectUrl, 'popup');
                         }

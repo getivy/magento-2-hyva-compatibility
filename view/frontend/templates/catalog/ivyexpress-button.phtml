@@ -1,5 +1,15 @@
-<?php $_product = $block->getProduct(); ?>
-<?php $banner = $block->getBannerData(); ?>
+<?php
+
+declare(strict_types=1);
+
+use Magento\Catalog\Block\Product\View;
+
+/** @var View $block */
+
+$product = $block->getProduct();
+$banner = $block->getBannerData();
+
+?>
 
 <button
     x-show="isVisible"
@@ -8,9 +18,9 @@
     @click="submit()"
     type="button"
     class="ivy-checkout-button ivy-product-button"
-    data-cart-value="<?= $_product->getFinalPrice() ?>"
+    data-cart-value="<?= $product->getFinalPrice() ?>"
     data-shop-category="<?= $banner->getMcc() ?>"
-    data-currency-code="<?= $_product->getStore()->getCurrentCurrencyCode(); ?>"
+    data-currency-code="<?= $product->getStore()->getCurrentCurrencyCode(); ?>"
     data-locale="<?= $banner->getLocale() ?>"
     style="visibility: hidden; display:none"
 >
@@ -28,7 +38,7 @@
 
             submit() {
                 const addToCartForm = document.getElementById('product_addtocart_form');
-                if (addToCartForm.checkValidity()) {
+                if (addToCartForm.reportValidity()) {
                     this.ajaxSubmit(addToCartForm);
                 }
             },
