@@ -3,16 +3,6 @@
 
 This is a Magento 2 module template that enables you to customize Hyvä React Checkout seamlessly. It adds a custom Webpack configuration, so that you can extend upon the React sources of the original React Checkout module. In effect, this allows for kind of a parent/child theming mechanism, not for the entire Hyvä theme, but only for the specific React sources in your custom checkout.
 
-## Why do you need this?
-
-The React Checkout is a great solution for checkout page in any Magento 2 based site. It contains a ReactApp which constitutes the checkout page. When you want to use Hyvä Checkout in your site, you will eventually come to a point where you want to work on the ReactApp embedded in it. This means you cannot now use Hyvä Checkout directly as a composer dependency in your project.
-
-Currently, there are two ways to approach this issue. You can fork Hyvä Checkout repository and use the forked version in your project. You are now able to apply the customization to this forked version. Another approach would be setup Hyvä Checkout in the `app/code/Hyva/ReactCheckout` directory. In both cases, it will be difficult to get the updates in the original React Checkout repository. You need to manually port the changes.
-
-This module template helps you in this situation. It allows you to use the Hyvä Checkout as a composer dependency. You are exclusively working on this module which actually resides in the `app/code` directory. It allows you to edit only those React Components you really need to customize it. Eventually, you know which all React files you have customized. Hyvä Checkout is now completely separate and you can bring the updates if you need it without any headaches.
-
-We highly recommend going for this approach when it comes to customize Hyvä Checkout.
-
 ## Installation
 - Install Hyvä Checkout via composer. You can find more details in the [**official documentation**](https://hyva-themes.github.io/magento2-react-checkout/installation/)
 - Setup this Magento 2 module template in your project. We are naming the module `Esparksinc_IvyPaymentHyvaCompatibility`.
@@ -76,6 +66,3 @@ repository. But you may face issues when you use them inside the template. This 
 relative imports. You need to use `@hyva/react-checkout` for all those non-resolving imports.
 
 There will be solution for this problem in those repositories. So always pay attention in the payment repositories documentation.
-
-## Credits
-The brain behind this idea is [**Jisse Reitsma**](https://github.com/jissereitsma). You can find his original work here: [**Yireo_ExampleHyvaCheckout**](https://github.com/yireo-training/Yireo_ExampleHyvaCheckout).
