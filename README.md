@@ -32,6 +32,6 @@ If you have installed this extension via `composer`, simply follow the `composer
 
     composer remove getivy/magento-2-hyva-compatibility
 
-If you have copied files to `app/code/Esparksinc/IvyPaymentHyvaCompatibility/`, remove them.
+If you have copied files to `app/code/Esparksinc/IvyPaymentHyvaCompatibility`, remove them.
 
 Next, follow your deployment procedure to copy changes to your live site. Do not forget to upgrade your Magento 2 setup and clean cache after removing the extension.
