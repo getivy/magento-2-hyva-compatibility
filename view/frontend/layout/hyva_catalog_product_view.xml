@@ -1,18 +1,10 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
-<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-	<body>
-		<referenceBlock name="addtocart.shortcut.buttons">
-            <block class="Magento\Catalog\Block\Product\View" template="Esparksinc_IvyPaymentHyvaCompatibility::catalog/ivyexpress-button.phtml" name="ivy.checkout.button" ifconfig="payment/ivy/active" after="-">
-				<arguments>
-					<argument name="banner_data" xsi:type="object">Esparksinc\IvyPayment\ViewModel\Banner</argument>
-				</arguments>
-			</block>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="addtocart.shortcut.buttons">
+            <referenceBlock name="ivy.checkout.button"
+                            template="Esparksinc_IvyPaymentHyvaCompatibility::catalog/ivyexpress-button.phtml"/>
         </referenceBlock>
-	</body>
+    </body>
 </page>
