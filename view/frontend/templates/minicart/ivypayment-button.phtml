@@ -25,10 +25,8 @@ $banner = $block->getBannerData();
             isVisible: false,
 
             initButton() {
-                setTimeout(() => {
-                    this.isVisible = true;
-                    window.initIvyButton();
-                }, 2000);
+                this.isVisible = true;
+                window.initIvyButton();
             },
 
             submit() {
