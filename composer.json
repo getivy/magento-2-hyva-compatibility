@@ -8,7 +8,7 @@
         "hyva-themes/magento2-reset-theme": "*",
         "hyva-themes/magento2-theme-module": ">=1.1.19",
         "hyva-themes/magento2-react-checkout": "*",
-        "getivy/magento-2": "^1.1.1",
+        "getivy/magento-2": "^1.2",
         "getivy/magento-2-graphql": "^1.1"
     },
     "authors": [
